@@ -16,9 +16,17 @@ class PullDuplexStream extends Duplex {
     }
 
     drainPull() {
+        // Ensure misbehaving streams wait for a previous drain to finish before
+        // letting them pull again.
+        if (this.busy) {
+            return;
+        }
+        this.busy = true;
+
         const self = this;
 
         this.source(null, function next(end, data) {
+            self.busy = false;
             if (end instanceof Error) {
                 return self.emit('error', end);
             }
@@ -28,6 +36,7 @@ class PullDuplexStream extends Duplex {
             }
 
             if (self.push(data)) {
+                self.busy = true;
                 self.source(null, next);
             }
         });
