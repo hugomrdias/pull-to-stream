@@ -78,6 +78,35 @@ test.cb('source pause/resume', (t) => {
     readable.on('end', () => t.end());
 });
 
+test.cb('source ensure drain not called while drain in progress', (t) => {
+    const values = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    const readable = toStream.readable(pull(
+        pull.values(values),
+        pull.asyncMap((value, cb) => {
+            setTimeout(() => {
+                // pass through value with delay
+                cb(null, value);
+            }, 10);
+        })
+    ));
+
+    const timer = setInterval(() => {
+        readable.resume();
+    }, 5);
+
+    const output = [];
+
+    readable.on('data', (c) => {
+        output.push(c);
+    });
+
+    readable.once('end', () => {
+        clearInterval(timer);
+        t.deepEqual(output, values, 'End called after all values emitted');
+        t.end();
+    });
+});
+
 test.cb('sink basic', (t) => {
     t.plan(1);
 
