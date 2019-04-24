@@ -1,6 +1,6 @@
 {
     "name": "pull-to-stream",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "pull-stream to stream module ",
     "repository": "hugomrdias/pull-to-stream",
     "author": "Hugo Dias <hugomrdias@gmail.com> (hugodias.me)",
