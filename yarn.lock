@@ -4958,9 +4958,9 @@ pseudomap@^1.0.2:
   integrity sha1-8FKijacOYYkX7wqKw0wa5aaChrM=
 
 pull-stream@^3.6.9:
-  version "3.6.11"
-  resolved "https://registry.yarnpkg.com/pull-stream/-/pull-stream-3.6.11.tgz#601956610952a76defdcb18e4435e2478659cead"
-  integrity sha512-43brwtqO0OSltctKbW1mgzzKH4TNE8egkW+Y4BFzlDWiG2Ayl7VKr4SeuoKacfgPfUWcSwcPlHsf40BEqNR32A==
+  version "3.6.12"
+  resolved "https://registry.yarnpkg.com/pull-stream/-/pull-stream-3.6.12.tgz#11231c8dd77afe4ae30d1cd543873179e3b30a32"
+  integrity sha512-+LO1XIVyTMmeoH26UHznpgrgX2npTVYccTkMpgk/EyiQjFt1FmoNm+w+/zMLuz9U3bpvT5sSUicMKEe/2JjgEA==
 
 pump@^3.0.0:
   version "3.0.0"
